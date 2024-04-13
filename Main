@@ -1,0 +1,16 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Create a Random object
+        Random random = new Random();
+
+        // Generate a random number between 1 and 100
+        int randomNumber = random.Next(1, 101);
+
+        // Print the random number
+        Console.WriteLine("Random number: " + randomNumber);
+    }
+}
