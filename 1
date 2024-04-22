@@ -1,0 +1,61 @@
+class Bank {
+    constructor() {
+        this.accounts = [];
+    }
+
+    createAccount(name, initialBalance) {
+        const account = {
+            name: name,
+            balance: initialBalance
+        };
+        this.accounts.push(account);
+        console.log(`Account created for ${name} with initial balance $${initialBalance}`);
+    }
+
+    deposit(accountName, amount) {
+        const account = this.findAccount(accountName);
+        if (account) {
+            account.balance += amount;
+            console.log(`$${amount} deposited into ${accountName}'s account. New balance: $${account.balance}`);
+        } else {
+            console.log(`Account ${accountName} not found.`);
+        }
+    }
+
+    withdraw(accountName, amount) {
+        const account = this.findAccount(accountName);
+        if (account) {
+            if (account.balance >= amount) {
+                account.balance -= amount;
+                console.log(`$${amount} withdrawn from ${accountName}'s account. New balance: $${account.balance}`);
+            } else {
+                console.log(`Insufficient funds for ${accountName} to withdraw $${amount}`);
+            }
+        } else {
+            console.log(`Account ${accountName} not found.`);
+        }
+    }
+
+    checkBalance(accountName) {
+        const account = this.findAccount(accountName);
+        if (account) {
+            console.log(`${accountName}'s account balance: $${account.balance}`);
+        } else {
+            console.log(`Account ${accountName} not found.`);
+        }
+    }
+
+    findAccount(accountName) {
+        return this.accounts.find(account => account.name === accountName);
+    }
+}
+
+// Example usage:
+const bank = new Bank();
+bank.createAccount("John", 1000);
+bank.createAccount("Alice", 500);
+
+bank.deposit("John", 200);
+bank.withdraw("Alice", 100);
+bank.checkBalance("John");
+bank.checkBalance("Alice");
