@@ -1,0 +1,23 @@
+function calculator(num1, operator, num2) {
+  switch(operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      if(num2 !== 0) {
+        return num1 / num2;
+      } else {
+        return 'Error: Division by zero!';
+      }
+    default:
+      return 'Invalid operator';
+  }
+}
+
+console.log(calculator(5, '+', 3)); // Output: 8
+console.log(calculator(10, '-', 4)); // Output: 6
+console.log(calculator(6, '*', 2)); // Output: 12
+console.log(calculator(8, '/', 4)); // Output: 2
